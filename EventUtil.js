@@ -25,6 +25,18 @@ var EventUtil = {
       }
   },
   
+  getRelatedTarget: fuction(event){
+      if (event.relatedTarget){
+          return event.relatedTarget;
+    } else if (event.toElement){
+        return event.toElement;
+    } else if (event.fromElement){
+        return event.fromElement;
+    } else {
+        return null;
+    }
+  },
+  
   removeHandler: function(element, type, handler){
       if (element.removeEventListener){
           element.removeEventListerner(type, handler, false);
