@@ -14,7 +14,7 @@ var EventUtil = {
   },
   
   getTarget: function(event){
-      return event,target || event.srcElement;
+      return event.target || event.srcElement;
   },
   
   preventDefault: function(event){
@@ -35,6 +35,27 @@ var EventUtil = {
     } else {
         return null;
     }
+  },
+    
+  getButton: function(event){
+      if (document.implementation.hasFeature("MouseEvents", "2.0")){
+          return event.button; 
+      } else {
+          swith (event.button){
+            case 0:
+            case 1:
+            case 3: 
+            case 5:
+            case 7:
+              return 0;
+            case 2:
+            case 6:
+              return 2;
+            case 4:
+              return 1;
+          }
+      }
+    
   },
   
   removeHandler: function(element, type, handler){
