@@ -57,7 +57,23 @@ var EventUtil = {
       }
     
   },
+    
+  getWheelDelta: function(event){
+      if (event.wheelDelta){
+          return (client.engine.opera && client.engine.opera <9.5? -event.wheelDelta: event.wheelDelta);
+      } else {
+          return -event.detail * 40;
+      }
+  },
   
+  getCharCode: function(event){
+      if (typeof event.charCode == "number"){
+          return event.charCode;
+      } else {
+          return event.keyCode;
+      }
+  },  
+    
   removeHandler: function(element, type, handler){
       if (element.removeEventListener){
           element.removeEventListerner(type, handler, false);
