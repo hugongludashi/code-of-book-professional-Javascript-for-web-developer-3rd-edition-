@@ -72,7 +72,12 @@ var EventUtil = {
       } else {
           return event.keyCode;
       }
-  },  
+  }, 
+
+  getClipboardText: function(event){
+	  var clipboardDate = (event.clipboardDate || window.clipboardData);
+	  return clipboardData.getData("text");
+  },
     
   removeHandler: function(element, type, handler){
       if (element.removeEventListener){
@@ -90,5 +95,13 @@ var EventUtil = {
       } else {
           event.cancleBubble = true;
       }
-   }  
+   },
+   
+  setClipboardText: function(event, value){
+	  if (event.clipboardData){
+		  return event.clipboardData.setData("text/plain", value);
+	  } else if (window.clipboardData){
+		  return window.clipboardData.setData("text", value);
+	  }
+  },   
 };
