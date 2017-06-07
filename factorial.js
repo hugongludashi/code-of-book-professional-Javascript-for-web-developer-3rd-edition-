@@ -8,3 +8,7 @@ function factorial(num){
     return num*arguments.callee(num-1);
   }
 }
+
+/*Changing the highlighted line to use arguments.callee instead of the function name ensures that
+*this function will work regardless of how it is accessed.
+*/
