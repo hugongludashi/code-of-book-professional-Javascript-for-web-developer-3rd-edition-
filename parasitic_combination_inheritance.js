@@ -1,3 +1,7 @@
+/*This example is more effi cient in that the SuperType constructor is being called only one
+*time, avoiding having unnecessary and unused properties on SubType.prototype.
+*/
+
 function SuperType(nam){
   this.name = name;
   this.colors = ["red", "blue", "green"];
