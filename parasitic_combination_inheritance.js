@@ -12,8 +12,19 @@ function SubType(name,age){
   this.age = age;
 } 
 
-SubType.prototype = new SuperType(); //first call to SuperType()
-SubType.prototype.constructor = SubType;
+function object(o){
+  function F(){}
+  F.prototype = o;
+  return new F();
+};
+
+function inheritPrototype(SubType, SuperType){
+  var prototype = object(SupertType.prototype);  //Or can use this code:
+  prototype.constructor =SubType;                // SubType.prototype = Object.create(Supertype.prototype);
+  SubType.prototype = prototype;                 // SubType.prototype.constructor = SubType;
+};
+
+
 SubType.prototype.sayAge = function(){
   alert(this.age);
 };
